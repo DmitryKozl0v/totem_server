@@ -22,11 +22,26 @@
             console.log('Disconnected from the server')
         });
 
-        socket.emit('message', {name: 'Gonzalo'});
+        // socket.emit('message', {name: 'Gonzalo'});
 
         socket.on('message', function(payload){
             console.log('Listening: ', payload)
         });
+
+        socket.on('message-from-client', function(payload) {
+        
+            console.log('New message:');
+            console.log('From: ' + payload['name']);
+            console.log('Message: ' + payload['message']);
+            console.log('.===========================.');
+        });
+
+        socket.on('active-bands', function(payload) {
+            console.clear();
+            console.table(payload);
+        });
+
+
     </script>
 </body>
 </html>
