@@ -4,11 +4,10 @@ require('dotenv').config();
 
 // Express app
 const app = express();
+const router = express.Router();
 
 // Node server
 const server = require('http').createServer(app);
-module.exports.io = require('socket.io')(server);
-require('./sockets/socket');
 
 
 
@@ -24,4 +23,8 @@ server.listen(process.env.PORT, (err) => {
 
     console.log('Server running on port', 3000);
 
+}); 
+
+app.get('/hola', function (req, res) {
+    res.status(201).send("hola");
 });
